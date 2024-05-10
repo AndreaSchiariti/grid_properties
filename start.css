@@ -1,0 +1,59 @@
+/* creo l'effetto opaco dei colori */
+
+section { 
+  position:relative;
+}
+
+section::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* escludo tutti i <p> e <li> dall'effetto opaco, staccandoli dal flow della pagina con il position:relative e ponendoli a un index z più alto in modo che risultino "sopra" */
+p, li {
+  position: relative;
+  z-index: 1;
+}
+
+/* Dispongo la Grid e sistemo i cubi */
+
+body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 0.5fr);
+  grid-template-areas: 
+  "green-box green-box green-box"
+  "yellow-box red-box blue-box"
+  "yellow-box red-box blue-box"
+  "orange-box orange-box blue-box";
+}
+
+#green {
+  grid-area: green-box;
+}
+
+#yellow {
+  grid-area: yellow-box;
+}
+
+#red {
+  grid-area: red-box;
+}
+
+#blue {
+  grid-area: blue-box;
+}
+
+#orange {
+  grid-area: orange-box;
+}
+
+#yellow ul, #red ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
